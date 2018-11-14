@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">такси такси вези вези</string>
+
+
+    <string name="orders_successfully_downloaded">Заказы успешно скачаны с сервера</string>
+    <string name="you_are_offline">Вы оффлайн</string>
+
+    <string name="lets_try_internet">Попробуйте: \n * Выключить режим самолета \n * Включить мобильную передачу данных или Wi-Fi \n * Убедиться в доступности сигнала
+        \n * Оплатить, наконец, счет за интернет ;) \n \n и нажмите</string>
+    <string name="retry">Перезапустить</string>
+    <string name="orders_are_downloading">Идет процесс скачивания...</string>
+
+    <string name="details_from_where_tv">откуда</string>
+    <string name="details_where_tv">куда</string>
+    <string name="details_when_tv">когда</string>
+    <string name="details_how_much_tv">почем</string>
+
+
+</resources>

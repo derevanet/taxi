@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:padding="@dimen/activity_horizontal_margin">
+
+    <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="@string/you_are_offline"
+       android:textStyle="bold"
+       android:gravity="center"
+       android:textSize="16sp"/>
+
+    <TextView
+        android:padding="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lets_try_internet"/>
+
+</LinearLayout>

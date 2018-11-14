@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryLight"
+    android:fitsSystemWindows="true"
+    android:theme="@style/NoActionBarTheme">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <include layout="@layout/toolbar"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constrainedWidth="true">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbarLayout"
+
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/addressLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/rectangle_round_corners_orange_stroke"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/frag_from_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_margin="@dimen/activity_vertical_margin"
+                        android:text="@string/details_from_where_tv"/>
+
+                    <TextView
+                        android:id="@+id/frag_start_city_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:paddingStart="@dimen/activity_horizontal_margin"
+                        android:paddingEnd="@dimen/activity_horizontal_margin"/>
+
+                    <TextView
+                        android:id="@+id/frag_start_address_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:fontFamily="sans-serif-medium"
+                        android:paddingStart="@dimen/activity_horizontal_margin"
+                        android:paddingEnd="@dimen/activity_horizontal_margin"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/frag_to_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_margin="@dimen/activity_vertical_margin"
+                        android:text="@string/details_where_tv"/>
+
+                    <TextView
+                        android:id="@+id/frag_end_city_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:paddingStart="@dimen/activity_horizontal_margin"
+                        android:paddingEnd="@dimen/activity_horizontal_margin"/>
+
+                    <TextView
+                        android:id="@+id/frag_end_address_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                        android:gravity="start"
+                        android:fontFamily="sans-serif-medium"
+                        android:paddingStart="@dimen/activity_horizontal_margin"
+                        android:paddingEnd="@dimen/activity_horizontal_margin"
+                        android:singleLine="true"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/dateLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/rectangle_round_corners_gray_stroke"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addressLayout">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/details_when_tv"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/frag_trip_time_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="@dimen/activity_horizontal_margin"
+                                android:paddingEnd="@dimen/activity_horizontal_margin"
+                                android:textSize="20sp"/>
+
+                            <TextView
+                                android:id="@+id/frag_trip_date_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="@dimen/activity_horizontal_margin"
+                                android:paddingEnd="@dimen/activity_horizontal_margin"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/details_how_much_tv"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:id="@+id/frag_order_amount_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="@dimen/activity_horizontal_margin"
+                                android:paddingEnd="@dimen/activity_horizontal_margin"
+                                android:textSize="20sp"/>
+
+                            <TextView
+                                android:id="@+id/frag_currency_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/vehicleLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rectangle_round_corners_orange_stroke"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dateLayout">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:elevation="10dp"
+                        app:cardCornerRadius="8dp">
+
+                        <ImageView
+                            android:id="@+id/frag_vehicle_photo_iv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scaleType="centerCrop"/>
+                    </android.support.v7.widget.CardView>
+
+
+                    <ProgressBar
+                        android:id="@+id/frag_progressBar"
+                        style="?android:attr/progressBarStyleLargeInverse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/frag_vehicle_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/activity_horizontal_margin"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textSize="18sp"
+                            android:fontFamily="sans-serif-medium"/>
+
+                        <TextView
+                            android:id="@+id/frag_reg_number_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/activity_horizontal_margin"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif"
+                            android:gravity="center"
+                            android:textSize="18sp"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/frag_driver_name_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:fontFamily="sans-serif-condensed"/>
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+
+
+
+
+</android.support.constraint.ConstraintLayout>
