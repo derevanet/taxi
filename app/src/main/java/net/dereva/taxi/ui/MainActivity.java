@@ -65,12 +65,10 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
     private void showOrderList() {
         URL url = JsonHelper.createUrl(ORDERS_URL);
         new ParseOrders().execute(url);
     }
-
 
     private class ParseOrders extends OrderListParser{
 
@@ -104,7 +102,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-
     public static class OrderListParser extends AsyncTask<URL, Void, Order[]> {
         // this Order[] will pass to onPostExecute(Order[] orders)
         @Override
@@ -114,7 +111,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
     public static Comparator<Order> OrderDateComparator = new Comparator<Order>() {
 
         @Override
@@ -122,7 +118,6 @@ public class MainActivity extends AppCompatActivity
             return ((o2.getOrderTime()).compareTo(o1.getOrderTime()));
         }
     };
-
 
     private void showRecyclerView(ArrayList<Order> orders){
         RecyclerView rv = findViewById(R.id.act_order_list_rv);
@@ -138,14 +133,12 @@ public class MainActivity extends AppCompatActivity
         rv.setAdapter(adapter);
     }
 
-
     private void openOrderInDetailsActivity(int position){
         Order clickedOrder = adapter.getOrder(position);
         Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
         intent.putExtra("clickedOrder", clickedOrder);
         startActivity(intent);
     }
-
 
     public boolean isOnline() {
         ConnectivityManager cm =
@@ -154,19 +147,16 @@ public class MainActivity extends AppCompatActivity
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
-
     private void showNoInternetDialog() {
         noInternetDialog = new NoInternetDialog();
         noInternetDialog.setCancelable(false);
         noInternetDialog.show(getSupportFragmentManager(), "noInternet");
     }
 
-
     public void onDialogRetryInternetConnectionClick() {
         noInternetDialog.dismiss();
         tryToShowOrders();
     }
-
 
     private void hideProgressBar(View view){
         //((ViewGroup)view.getParent()).removeView(view);
@@ -174,14 +164,12 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         sortedOrders = savedInstanceState.getParcelableArrayList("sortedOrders");
         showRecyclerView(sortedOrders);
     }
-
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {

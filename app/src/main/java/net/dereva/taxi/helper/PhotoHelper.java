@@ -9,11 +9,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class ImageHelper {
+public class PhotoHelper {
+
+    private static final long TEN_MINUTES = 600000;
 
 
-    public static void saveBitmapInCache(Context context, Bitmap b, String picName) {
+    public static void savePhotoInCache(Context context, Bitmap b, String picName) {
         File cache = context.getCacheDir();
         File file = new File(cache, picName);
 
@@ -30,7 +34,8 @@ public class ImageHelper {
         }
     }
 
-    public static Bitmap loadBitmapFromCache(Context context, String picName) {
+
+    public static Bitmap loadPhotoFromCache(Context context, String picName) {
         File cache = context.getCacheDir();
         File file = new File(cache, picName);
         FileInputStream fis;
@@ -50,10 +55,36 @@ public class ImageHelper {
         return b;
     }
 
-    public static void deletePictureFromCache(Context context, String picName) {
+
+    private static void deletePhotoFromCache(Context context, String picName) {
         File cache = context.getCacheDir();
         File file = new File(cache, picName);
         file.delete();
+
+    }
+
+
+    public static void startTimerToDeletePhotoFromCache(Context context, String picName) {
+        CleanCacheTask cleanCacheTask = new CleanCacheTask(context, picName);
+        Timer timer = new Timer();
+        timer.schedule(cleanCacheTask, TEN_MINUTES);
+
+    }
+
+
+    private static class CleanCacheTask extends TimerTask {
+        private Context context;
+        private String picName;
+
+        CleanCacheTask(Context context, String picName){
+            this.context = context;
+            this.picName = picName;
+        }
+
+        @Override
+        public void run() {
+            PhotoHelper.deletePhotoFromCache(context, picName);
+        }
 
     }
 

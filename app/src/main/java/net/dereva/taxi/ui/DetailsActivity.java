@@ -1,5 +1,6 @@
 package net.dereva.taxi.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,16 +9,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import net.dereva.taxi.R;
 import net.dereva.taxi.helper.DateHelper;
-import net.dereva.taxi.helper.ImageHelper;
+import net.dereva.taxi.helper.PhotoHelper;
 import net.dereva.taxi.model.Order;
 
 import java.io.IOException;
@@ -25,41 +25,38 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    public static final String URL_WHERE_IMAGE_STORE = "https://www.roxiemobile.ru/careers/test/images/";
-    public static final long TEN_MINUTES = 600000;
-
+    private static final String URL_WHERE_IMAGE_STORE = "https://www.roxiemobile.ru/careers/test/images/";
+    private static final String TAG = "photo";
 
     private ProgressBar progressBar;
     private ImageView vehiclePhoto;
     private String vehiclePhotoName;
+    private Context myContext;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        myContext = getBaseContext();
+        setToolbar();
 
         Order order = getOrder();
         bindOrderFieldsWithViewsAndSetValues(order);
 
         vehiclePhotoName = order.getVehicle().getPhoto();
-
         showVehiclePhoto(vehiclePhotoName);
-
-        setToolbar();
     }
 
 
     private void showVehiclePhoto(String vehiclePhotoName){
-        Bitmap b = ImageHelper.loadBitmapFromCache(getBaseContext(), vehiclePhotoName);
+        Bitmap b = PhotoHelper.loadPhotoFromCache(myContext, vehiclePhotoName);
         if(b != null){
             setBitmapInImageView(b);
-            Toast.makeText(getBaseContext(), "image got from cache", Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "photo got from cache");
             hideProgressBar(progressBar);
         }
         else {
@@ -89,17 +86,12 @@ public class DetailsActivity extends AppCompatActivity {
             super.onPostExecute(bitmap);
             hideProgressBar(progressBar);
             setBitmapInImageView(bitmap);
-            Toast.makeText(DetailsActivity.this, "image got from server", Toast.LENGTH_SHORT).show();
-            ImageHelper.saveBitmapInCache(getBaseContext(), bitmap, vehiclePhotoName);
-            startTimerToCleanCache();
+            Log.i(TAG, "photo got from server");
+            PhotoHelper.savePhotoInCache(myContext, bitmap, vehiclePhotoName);
+            PhotoHelper.startTimerToDeletePhotoFromCache(myContext, vehiclePhotoName);
 
         }
 
-        private void startTimerToCleanCache() {
-            CleanCacheTask cleanCacheTask = new CleanCacheTask();
-            Timer timer = new Timer();
-            timer.schedule(cleanCacheTask, TEN_MINUTES);
-        }
     }
 
 
@@ -113,23 +105,13 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
 
-    public class CleanCacheTask extends TimerTask {
-
-        @Override
-        public void run() {
-            ImageHelper.deletePictureFromCache(getBaseContext(), vehiclePhotoName);
-        }
-    }
-
-
     public static Bitmap getBitmapFromUrl(URL url){
         try {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setDoInput(true);
             connection.connect();
             InputStream input = connection.getInputStream();
-            Bitmap bitmap = BitmapFactory.decodeStream(input);
-            return bitmap;
+            return BitmapFactory.decodeStream(input);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -153,9 +135,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     private Order getOrder() {
         Intent intent = getIntent();
-        Order order = intent.getParcelableExtra("clickedOrder");
-
-        return order;
+        return intent.getParcelableExtra("clickedOrder");
     }
 
 

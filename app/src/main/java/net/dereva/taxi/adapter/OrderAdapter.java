@@ -27,8 +27,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         this.orderList = orderList;
     }
 
-
-
     @NonNull
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -36,11 +34,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         return new OrderViewHolder(view, orderClickListener);
     }
 
-    public /*static*/ class OrderViewHolder extends RecyclerView.ViewHolder {
+    class OrderViewHolder extends RecyclerView.ViewHolder {
 
         private TextView startAddress, endAddress, orderDate, amount, currency;
 
-        public OrderViewHolder(@NonNull View viewHolder, final OnOrderClickListener onOrderClickListener) {
+        OrderViewHolder(@NonNull View viewHolder, final OnOrderClickListener onOrderClickListener) {
             super(viewHolder);
             startAddress = viewHolder.findViewById(R.id.item_start_address_tv);
             endAddress = viewHolder.findViewById(R.id.item_end_address_tv);
@@ -70,7 +68,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             currency.setText(order.getPrice().getCurrency());
 
         }
-
     }
 
     @Override

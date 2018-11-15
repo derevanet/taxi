@@ -13,7 +13,7 @@ import java.net.URL;
 
 public class JsonHelper {
 
-    public static final String DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ssXXX";
+    private static final String DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ssXXX";
 
 
     private Order[] ordersList;

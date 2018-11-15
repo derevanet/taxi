@@ -8,8 +8,8 @@ import java.util.Date;
 
 public class DateHelper {
 
-    public static final String datePattern = "dd MMMM yyyy";
-    public static final String timePattern = "HH:mm";
+    private static final String datePattern = "dd MMMM yyyy";
+    private static final String timePattern = "HH:mm";
 
     public static String showOrderDate(Order order) {
         Date orderDate = order.getOrderTime();
