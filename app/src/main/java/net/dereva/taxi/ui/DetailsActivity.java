@@ -113,7 +113,8 @@ public class DetailsActivity extends AppCompatActivity {
             InputStream input = connection.getInputStream();
             return BitmapFactory.decodeStream(input);
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.w(TAG, "не удалось загрузить картинку", e);
+
             return null;
         }
 

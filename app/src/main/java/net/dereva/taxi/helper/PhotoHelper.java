@@ -21,11 +21,9 @@ public class PhotoHelper {
         File cache = context.getCacheDir();
         File file = new File(cache, picName);
 
-        try {
-            FileOutputStream fos = new FileOutputStream(file);
+        try (FileOutputStream fos = new FileOutputStream(file)){
             b.compress(Bitmap.CompressFormat.JPEG, 100, fos);
             fos.flush();
-            fos.close();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -34,17 +32,13 @@ public class PhotoHelper {
         }
     }
 
-
     public static Bitmap loadPhotoFromCache(Context context, String picName) {
         File cache = context.getCacheDir();
         File file = new File(cache, picName);
-        FileInputStream fis;
         Bitmap b = null;
 
-        try {
-            fis = new FileInputStream(file);
+        try (FileInputStream fis = new FileInputStream(file)) {
             b = BitmapFactory.decodeStream(fis);
-            fis.close();
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -55,7 +49,6 @@ public class PhotoHelper {
         return b;
     }
 
-
     private static void deletePhotoFromCache(Context context, String picName) {
         File cache = context.getCacheDir();
         File file = new File(cache, picName);
@@ -63,14 +56,12 @@ public class PhotoHelper {
 
     }
 
-
     public static void startTimerToDeletePhotoFromCache(Context context, String picName) {
         CleanCacheTask cleanCacheTask = new CleanCacheTask(context, picName);
         Timer timer = new Timer();
         timer.schedule(cleanCacheTask, TEN_MINUTES);
 
     }
-
 
     private static class CleanCacheTask extends TimerTask {
         private Context context;

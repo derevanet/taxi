@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity
 
     public static final String ORDERS_URL = "https://www.roxiemobile.ru/careers/test/orders.json";
 
-
     private ProgressBar progressBar;
     private OrderAdapter adapter;
     private NoInternetDialog noInternetDialog;
@@ -47,7 +46,6 @@ public class MainActivity extends AppCompatActivity
         parentLayout = findViewById(android.R.id.content);
         progressBar = findViewById(R.id.act_progressBar);
 
-
         if(savedInstanceState==null) {
             tryToShowOrders();
         } else {
@@ -55,7 +53,6 @@ public class MainActivity extends AppCompatActivity
         }
 
     }
-
 
     private void tryToShowOrders() {
         if(isOnline()){

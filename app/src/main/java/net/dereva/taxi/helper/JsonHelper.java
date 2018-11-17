@@ -15,7 +15,6 @@ public class JsonHelper {
 
     private static final String DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ssXXX";
 
-
     private Order[] ordersList;
 
     public static URL createUrl(String link){
@@ -27,7 +26,6 @@ public class JsonHelper {
             return null;
         }
     }
-
 
     public Order[] parseJsonFromUrl(URL url){
 
