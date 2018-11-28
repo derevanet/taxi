@@ -1,19 +1,31 @@
 <resources>
     <string name="app_name">такси такси вези вези</string>
 
-
-    <string name="orders_successfully_downloaded">Заказы успешно скачаны с сервера</string>
-    <string name="you_are_offline">Вы оффлайн</string>
-
-    <string name="lets_try_internet">Попробуйте: \n * Выключить режим самолета \n * Включить мобильную передачу данных или Wi-Fi \n * Убедиться в доступности сигнала
-        \n * Оплатить, наконец, счет за интернет ;) \n \n и нажмите</string>
+    <!--dialog_no_internet.xml-->
+    <string name="you_are_offline">Подключение отсутствует</string>
     <string name="retry">Перезапустить</string>
-    <string name="orders_are_downloading">Идет процесс скачивания...</string>
+    <string name="lets_try">Попробуйте:</string>
+    <string name="lets_try_internet">* Выключить режим самолета
+        \n* Включить мобильную передачу данных или Wi-Fi
+        \n* Убедиться в доступности сигнала</string>
+    <string name="push_button">и нажмите</string>
 
-    <string name="details_from_where_tv">откуда</string>
-    <string name="details_where_tv">куда</string>
-    <string name="details_when_tv">когда</string>
-    <string name="details_how_much_tv">почем</string>
+    <!--activity_details.xml-->
+    <string name="items_are_downloading">Идет процесс скачивания…</string>
+    <string name="items_successfully_downloaded">Заказы успешно скачаны с сервера</string>
 
+    <!--details activity-->
+    <string name="from_where">откуда</string>
+    <string name="where">куда</string>
+    <string name="when">когда</string>
+    <string name="how_much_tv">почем</string>
+
+    <!--empty_view_no_image_view_no_connection.xml-->
+    <string name="unable_to_download_pic">Не удалось скачать изображение</string>
+    <string name="no_connection">Отсутсвует подключение к интернету</string>
+    <string name="recommendation_no_connection">Проверьте, все ли там у вас исправно с интернетом
+        и попробуйте снова</string>
+    <string name="click_to_repeat">Нажмите здесь, \n чтобы попробовать скачать заново</string>
+    <string name="file_absent_on_server">Файл отсутствует на серевере</string>
 
 </resources>
